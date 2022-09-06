@@ -4,8 +4,9 @@ https://github.com/NOT-ERROR-056/stackoverflow_clone_project/wiki
 
 ## 기술 적용
 1. JPA 연관 매핑 및 순환참조 방지
-2. 상황에 맞게 Exceptional Handling 
-3. 공통된 컬럼에 __JPA Auditing__ 기술 적용
+2. 전체 조회시 Paging 정렬 기능 구현
+3. 상황에 맞게 Exceptional Handling 
+4. 공통된 컬럼에 __JPA Auditing__ 기술 적용
 
 ```
 @Getter
@@ -23,7 +24,7 @@ public class Auditable {
 }
 ```
 
-4. AOP를 적용하여 효율적인 log 기록
+5. AOP를 적용하여 효율적인 log 기록
 ```
 @Aspect
 public class LogAop {
