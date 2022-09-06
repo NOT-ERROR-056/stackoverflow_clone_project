@@ -29,7 +29,8 @@ const ReplyBtn = styled.span`
 `;
 
 const Reply = ({ questionId }) => {
-    const url = 'http://192.168.4.143:8080';
+    const url = process.env.REACT_APP_SERVER;
+
     const [content, setContent] = useState('');
     const createContent = (e) => {
         setContent(e.target.value.trim());
@@ -51,12 +52,13 @@ const Reply = ({ questionId }) => {
             .then((res) => res.json())
             .then((res) => window.location.replace(`/questions/${res.data.questionId}`));
         setAlert(false);
-
     };
     return (
         <ReplyContainer>
             <h3>Your Answer</h3>
-            <ReplyQuestion onChange={createContent} />
+
+            <ReplyQuestion onChange={createContent} alert={alert} />
+
             {alert && <span style={{ color: 'blue' }}>댓글을 입력하세요</span>}
             <ReplyBtn onClick={reply}>Post Your Answer</ReplyBtn>
         </ReplyContainer>

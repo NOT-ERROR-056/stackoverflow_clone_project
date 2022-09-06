@@ -16,7 +16,7 @@ function App() {
             <Header />
             <Router>
                 <Routes>
-                    <Route path="/" element={<Home />} />
+                    <Route path="/" element={<Home setUserInfo={setUserInfo} />} />
                     <Route path="/questions/:id" element={<Questions setUserInfo={setUserInfo} />} />
                     <Route path="/notfound" element={<PageNotFound />} />
                     <Route path="/questions/ask" element={<AskQuestion userInfo={userInfo} />} />

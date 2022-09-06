@@ -9,7 +9,7 @@ import { useParams } from 'react-router-dom';
 const Questions = ({ setUserInfo }) => {
     const { id } = useParams();
     const [isDeleted, setIsDeleted] = useState(false);
-    
+
     return (
         <BodyContainer>
             <QuestionInfo questionId={id} setIsDeleted={setIsDeleted} setUserInfo={setUserInfo} />

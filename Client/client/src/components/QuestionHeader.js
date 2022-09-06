@@ -54,13 +54,12 @@ const FilerButton = styled(Button)`
 const QuestionHeader = () => {
     const [totalNum, setTotalNum] = useState(0);
 
-    fetch('http://192.168.4.143:8080/questions')
+    fetch(`${process.env.REACT_APP_SERVER}/questions`)
         .then((res) => {
             return res.json();
         })
         .then((data) => {
             setTotalNum(data.pageInfo.totalElements);
-            // console.log(setTotalNum);
         });
     return (
         <>

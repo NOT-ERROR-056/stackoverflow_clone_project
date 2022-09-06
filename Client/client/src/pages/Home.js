@@ -3,11 +3,11 @@ import { BodyContainer } from '../components/BodyContainer';
 import QuestionHeader from '../components/QuestionHeader';
 import QuestionContainer from '../components/QuestionContainer';
 
-const Home = () => {
+const Home = ({ setUserInfo }) => {
     return (
         <BodyContainer>
             <QuestionHeader />
-            <QuestionContainer />
+            <QuestionContainer setUserInfo={setUserInfo} />
         </BodyContainer>
     );
 };

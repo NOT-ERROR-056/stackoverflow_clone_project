@@ -108,7 +108,7 @@ const RecommendMinusBtn = styled.button`
 `;
 
 const QuestionInfo = ({ questionId, setIsDeleted, setUserInfo }) => {
-    const url = 'http://192.168.4.143:8080';
+    const url = process.env.REACT_APP_SERVER;
     const [isLoading, setIsLoading] = useState(true);
     const navigate = useNavigate();
     const [question, setQuestion] = useState({});

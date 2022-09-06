@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import AnswerModal from './AnswerModal';
 
 const AnswerContainer = styled.div`
     display: flex;
@@ -66,7 +67,11 @@ const AnswerInput = styled.textarea`
 `;
 
 const AnswerInfo = ({ answerId, userId, content, regDate, editDate, recommendNum, questionId, setIsLoading }) => {
-    const url = 'http://192.168.4.143:8080';
+    const url = process.env.REACT_APP_SERVER;
+    const [isOpen, setIsOpen] = useState(false);
+    const openModal = () => {
+        setIsOpen(true);
+    };
     const deleteAnswer = () => {
         fetch(`${url}/questions/${questionId}/answers/${answerId}`, {
             method: 'DELETE',
@@ -149,13 +154,15 @@ const AnswerInfo = ({ answerId, userId, content, regDate, editDate, recommendNum
                         ) : (
                             <>
                                 <AnswerLeftBtn onClick={editAnswer}>Edit</AnswerLeftBtn>
-                                <AnswerRightBtn onClick={deleteAnswer}>Delete</AnswerRightBtn>
+                                <AnswerRightBtn onClick={openModal}>Delete</AnswerRightBtn>
+
+                                {isOpen ? <AnswerModal deleteAnswer={deleteAnswer} setIsOpen={setIsOpen} /> : null}
                             </>
                         )}
                     </Buttons>
                     <AnswerInfoTag>
                         <AnswerUserId>{userId}</AnswerUserId>
-                        <AnsweredDate>{editDate}</AnsweredDate>
+                        <AnsweredDate>{editDate.slice(0, 10)}</AnsweredDate>
                     </AnswerInfoTag>
                 </AnswerBtnContainer>
             </AnswerContentContainer>

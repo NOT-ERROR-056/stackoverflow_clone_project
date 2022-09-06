@@ -59,9 +59,16 @@ const Tag = styled.span`
 const Question = ({ item }) => {
     const navigate = useNavigate();
     const moveToTitle = () => {
-        console.log('누름', item.questionId);
         navigate(`/questions/${item.questionId}`);
+        console.log(item.editDate);
     };
+    const aaa = item.editDate.slice(0, 10);
+
+    // const date = new Date();
+    // const year = date.getFullYear();
+    // const month = ('0' + (date.getMonth() + 1)).slice(-2);
+    // const day = ('0' + date.getDate()).slice(-2);
+    // const dateStr = year + '/' + month + '/' + day;
 
     return (
         <Wrapper>
@@ -71,23 +78,16 @@ const Question = ({ item }) => {
                 <div>3 views</div>
             </WrapLeft>
             <WrapRight>
-                {/* 라우터할때 Link to 설정해줄 것 */}
-
                 <div className="title" onClick={moveToTitle}>
                     {item.title}
                 </div>
 
                 <div className="content">{item.content}</div>
                 <WrapBottom>
-                    <div>
-                        <Tag>{item.tag}</Tag>
-                        {/* <Tag>next.js</Tag> */}
-                    </div>
+                    <div>{item.tag ? <Tag>{item.tag}</Tag> : null}</div>
                     <div className="content-info">
                         <span>{item.userId}</span>
-                        <span>
-                            <b>3,197</b> asked 1 min ago
-                        </span>
+                        <span>time written {aaa}</span>
                     </div>
                 </WrapBottom>
             </WrapRight>

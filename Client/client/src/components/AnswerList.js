@@ -11,7 +11,7 @@ const AnswerListContainer = styled.div`
 
 const AnswerList = ({ questionId, isDeleted, setIsDeleted }) => {
     const [isLoading, setIsLoading] = useState(true);
-    const url = 'http://192.168.4.143:8080';
+    const url = process.env.REACT_APP_SERVER;
     const [answers, setAnswers] = useState([]);
 
     useEffect(() => {

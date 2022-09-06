@@ -5,7 +5,7 @@ import QuestionList from './QuestionList';
 const Wrapper = styled.div`
     display: flex;
     justify-content: center;
-    margin: 20px 10px;
+    margin: 45px 10px;
 `;
 
 const PageBtnFirst = styled.span`
@@ -35,17 +35,17 @@ const PageBtnOth = styled.span`
     }
 `;
 
-const QuestionContainer = () => {
+const QuestionContainer = ({ setUserInfo }) => {
     const [pageNum, setPageNum] = useState(1);
+    const [pageArr, setPageArr] = useState([]);
+
     const getNum = (e) => {
         setPageNum(Number(e.target.textContent));
     };
-    const pageArr = [1, 2, 3, 4, 5];
-    //const pageArr = [];
 
     return (
         <>
-            <QuestionList pageNum={pageNum}></QuestionList>
+            <QuestionList pageNum={pageNum} setPageArr={setPageArr} setUserInfo={setUserInfo}></QuestionList>
             {pageArr.length !== 0 ? (
                 <Wrapper>
                     {' '}
@@ -60,11 +60,6 @@ const QuestionContainer = () => {
                             </div>
                         );
                     })}
-                    ...
-                    <div>
-                        <PageBtnOth>1529131</PageBtnOth>
-                        <PageBtnOth>next</PageBtnOth>
-                    </div>
                 </Wrapper>
             ) : null}
         </>

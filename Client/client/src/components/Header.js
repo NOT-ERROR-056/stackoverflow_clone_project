@@ -211,6 +211,7 @@ const Search = () => {
         <Form
             onSubmit={(e) => {
                 // 게시글 검색 URL로 링크보낼 것
+
                 console.log(e.target[0].value);
                 e.preventDefault();
             }}
@@ -265,18 +266,7 @@ const Header = () => {
                         </a>
                     </li>
                     <li>
-                        <a
-                            href="#!"
-                            onClick={(e) => {
-                                // console.log('a태그 눌렸쩡');
-                                // e.stopPropagation();
-                                // if (e.target.classList.value === 'is-selected') {
-                                //     e.target.classList.remove('is-selected');
-                                // } else {
-                                //     e.target.classList.add('is-selected');
-                                // }
-                            }}
-                        >
+                        <a href="#!" onClick={(e) => {}}>
                             <FontAwesomeIcon icon={faBox} />
                         </a>
                     </li>

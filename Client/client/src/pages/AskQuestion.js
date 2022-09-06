@@ -43,11 +43,8 @@ const AskQuestion = ({ userInfo }) => {
     const navigate = useNavigate();
 
     const { id } = useParams();
-    console.log(id);
 
-    // url 적기
-    const url = `http://192.168.4.143:8080`;
-
+    const url = process.env.REACT_APP_SERVER;
     const handleSubmit = (e) => {
         e.preventDefault();
 
@@ -115,4 +112,3 @@ const AskQuestion = ({ userInfo }) => {
 };
 
 export default AskQuestion;
-
