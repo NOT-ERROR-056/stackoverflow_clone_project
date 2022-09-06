@@ -1,4 +1,5 @@
-> ### @ 프로젝트 설계 문서는 Wiki를 참고해주세요.
+> ### @ 프로젝트 설계 문서는 해당 프로젝트의 Repository Wiki(아래 링크)를 참고해주세요.
+https://github.com/NOT-ERROR-056/stackoverflow_clone_project/wiki
 
 # [PRE_PROJECT] Stack overflow 웹 clone 프로젝트
 
