@@ -14,14 +14,12 @@ import java.time.LocalDateTime;
 @Builder
 public class AnswerResponseDto {
     private Long answerId;
-
     private String content;
     private int recommendNum;
     private LocalDateTime regDate;
     private LocalDateTime editDate;
 
     private Long questionId; // id를 반환하는 것으로 수정
-
 
     /** Entity -> Dto */
     public AnswerResponseDto(Answer answer) {

@@ -2,6 +2,7 @@ package pre.project.api.domain.answer.entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.*;
+import pre.project.api.audit.Auditable;
 import pre.project.api.domain.question.entity.Question;
 
 import javax.persistence.*;
@@ -13,15 +14,13 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class Answer {
+public class Answer extends Auditable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long answerId;
     @Column(nullable = false)
     private String content;
-    @Column(updatable = false)
-    private LocalDateTime regDate;
-    private LocalDateTime editDate;
+
     private int recommendNum;
 
     @ManyToOne

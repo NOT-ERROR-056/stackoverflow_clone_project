@@ -3,6 +3,7 @@ package pre.project.api.domain.question.service;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import pre.project.api.domain.question.entity.Question;
 import pre.project.api.domain.question.repository.*;
@@ -34,7 +35,7 @@ public class QuestionServiceImpl implements QuestionService {
 
     public Page<Question> readAll(int page, int size) {
 
-        return questionRepository.findAll(PageRequest.of(page, size));
+        return questionRepository.findAll(PageRequest.of(page, size,Sort.by("questionId").descending()));
     }
 
     public Question update(QuestionPatchDto patchDto) {
@@ -44,7 +45,6 @@ public class QuestionServiceImpl implements QuestionService {
                 .ifPresent(title -> question.setTitle(title));
         Optional.ofNullable(patchDto.getContent())
                 .ifPresent(content -> question.setContent(content));
-        question.setEditDate(LocalDateTime.now());
 
         return questionRepository.save(question);
     }

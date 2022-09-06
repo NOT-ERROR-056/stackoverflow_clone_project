@@ -12,7 +12,7 @@ import pre.project.api.domain.answer.dto.AnswerResponseDto;
 import pre.project.api.exception.BusinessLoginException;
 import pre.project.api.exception.ExceptionCode;
 
-import java.time.LocalDateTime;
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -24,7 +24,7 @@ public class AnswerServiceImpl implements AnswerService {
 
 
     /** 질문 ID 확인 및 예외처리 */
-    private Question IsQuestion(Long questionId) {
+    private Question isQuestion(Long questionId) {
         Question question = questionRepository.findById(questionId).orElseThrow(() ->
                 new BusinessLoginException(ExceptionCode.QUESTION_NOT_FOUND));
         return question;
@@ -49,7 +49,7 @@ public class AnswerServiceImpl implements AnswerService {
     /** CREATE */
     @Transactional
     public Answer create(Long questionId, AnswerRequestDto requestDto) {
-        Question question = IsQuestion(questionId);
+        Question question = isQuestion(questionId);
         requestDto.setQuestion(question); // Question의 정보를 answer에 저장
         Answer answer = requestDto.toEntity();
         return answerRepository.save(answer);
@@ -58,9 +58,13 @@ public class AnswerServiceImpl implements AnswerService {
     /** READ */
     @Transactional(readOnly = true)
     public List<AnswerResponseDto> findAll(Long questionId) {
-        Question question = IsQuestion(questionId);
+        Question question = isQuestion(questionId);
         List<Answer> answers = question.getAnswers();
-        return answers.stream().map(AnswerResponseDto::new).collect(Collectors.toList());
+        return answers
+                .stream()
+                .map(AnswerResponseDto::new)
+                .sorted(Comparator.comparing(AnswerResponseDto::getAnswerId).reversed())
+                .collect(Collectors.toList());
     }
 
     /** UPDATE */
@@ -69,7 +73,6 @@ public class AnswerServiceImpl implements AnswerService {
         Answer answer = isAnswer(answerId);
         verifyQuestionIdAndAnswerId(questionId, answer);
         String content = requestDto.toEntity().getContent();
-        answer.setEditDate(LocalDateTime.now());
         answer.change(content);
         return answer;
     }

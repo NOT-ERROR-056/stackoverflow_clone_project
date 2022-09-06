@@ -13,8 +13,6 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @Builder
 public class AnswerRequestDto {
-    private LocalDateTime regDate= LocalDateTime.now();
-    private LocalDateTime editDate = LocalDateTime.now();
 
     private Question question;
     private String content;
@@ -22,8 +20,6 @@ public class AnswerRequestDto {
     /** Dto -> Entity */
     public Answer toEntity() {
         Answer answer = Answer.builder()
-                .regDate(regDate)
-                .editDate(editDate)
                 .question(question)
                 .content(content)
                 .build();

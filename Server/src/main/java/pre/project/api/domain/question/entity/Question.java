@@ -2,6 +2,7 @@ package pre.project.api.domain.question.entity;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.*;
+import pre.project.api.audit.Auditable;
 import pre.project.api.domain.answer.entity.Answer;
 
 import javax.persistence.*;
@@ -15,7 +16,7 @@ import java.util.List;
 @AllArgsConstructor
 @Entity
 @Builder
-public class Question {
+public class Question extends Auditable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -26,10 +27,6 @@ public class Question {
 
     @Column(nullable = false)
     private String content;
-
-    @Column(updatable = false)
-    private LocalDateTime regDate = LocalDateTime.now();
-    private LocalDateTime editDate = LocalDateTime.now();
 
     private int viewNum = 0;
 

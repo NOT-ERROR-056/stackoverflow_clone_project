@@ -21,9 +21,6 @@ public class QuestionResponseDto {
     private LocalDateTime regDate;
     private LocalDateTime editDate;
 
-
-
-
     public QuestionResponseDto(Question question) {
         this.questionId = question.getQuestionId();
         this.title = question.getTitle();
