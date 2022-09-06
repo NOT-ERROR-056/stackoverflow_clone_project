@@ -100,8 +100,6 @@ public class QuestionStubData {
                     1L,
                     "title-test1",
                     "content-test1",
-                    LocalDateTime.now(),
-                    LocalDateTime.now(),
                     0,
                     0,
                     new ArrayList<>());
@@ -112,8 +110,6 @@ public class QuestionStubData {
                     1L,
                     "title-test1",
                     "content-test1",
-                    LocalDateTime.now(),
-                    LocalDateTime.now(),
                     0,
                     0,
                     new ArrayList<>());
@@ -130,7 +126,6 @@ public class QuestionStubData {
                     .content(content)
                     .recommendNum(0)
                     .viewNum(0)
-                    .editDate(LocalDateTime.now())
                     .build();
 
             return updateQuestion;
@@ -141,8 +136,6 @@ public class QuestionStubData {
                     1L,
                     "title-test1",
                     "content-test1",
-                    LocalDateTime.now(),
-                    LocalDateTime.now(),
                     0,
                     0,
                     new ArrayList<>());
@@ -150,8 +143,6 @@ public class QuestionStubData {
                     2L,
                     "title-test2",
                     "content-test2",
-                    LocalDateTime.now(),
-                    LocalDateTime.now(),
                     0,
                     0,
                     new ArrayList<>());

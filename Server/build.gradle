@@ -39,6 +39,9 @@ dependencies {
 
     // db:mysql
     implementation 'mysql:mysql-connector-java'
+
+    //Gson
+    implementation 'com.google.code.gson:gson'
 }
 
 tasks.named('test') {

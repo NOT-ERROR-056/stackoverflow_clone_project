@@ -1,8 +1,4 @@
-<<<<<<<< HEAD:Server/src/main/java/pre/project/api/ServerApplication.java
-package pre.project.api;
-========
 package pre.project;
->>>>>>>> main:Server/src/main/java/pre/project/ServerApplication.java
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
